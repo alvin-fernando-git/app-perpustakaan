@@ -57,3 +57,22 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## About
+
+Nama Aplikasinya adalah Olib singkatan dari Online Library, yang bertujuan sebagai perpustakaan digital yang berisi buku-buku ilmiah, novel, dan lain-lain.
+
+## Cara menjalankan aplikasinya secara lokal adalah
+
+1. Clone repository ini ke komputer lokal.
+2. Buka terminal di folder project dan jalankan perintah `composer install`.
+3. Salin file `.env.example` dan ubah namanya menjadi `.env`, lalu atur konfigurasi database kamu (PostgreSQL/MySQL).
+4. Jalankan perintah `php artisan key:generate`.
+5. Jalankan `php artisan migrate` untuk menginisialisasi tabel database.
+6. Mulai server pengembangan lokal dengan menjalankan `php artisan serve`.
+
+## Perbedaan Model, View, dan Controller
+
+1. Model adalah bagian database dari aplikasinya
+2. View adalah bagian tampilan dari aplikasinya
+3. Controller adalah bagian yang menghubungkan antara Model dan View dengan instruksi pengguna
