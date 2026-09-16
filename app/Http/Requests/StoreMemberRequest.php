@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBookRequest extends FormRequest
+class StoreMemberRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -30,19 +30,17 @@ class StoreBookRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'judul.required' => 'Judul buku wajib diisi.',
-            'judul.max' => 'Judul buku maksimal 200 karakter.',
-            'penulis.required' => 'Nama penulis wajib diisi.',
-            'penerbit.required' => 'Nama penerbit wajib diisi.',
-            'tahun_terbit.required' => 'Tahun terbit wajib diisi.',
-            'tahun_terbit.integer' => 'Tahun terbit harus berupa angka.',
-            'tahun_terbit.min' => 'Tahun terbit tidak valid.',
-            'tahun_terbit.max' => 'Tahun terbit tidak boleh lebih dari tahun sekarang.',
-            'isbn.max' => 'ISBN maksimal 20 karakter.',
-            'stok.required' => 'Stok wajib diisi.',
-            'stok.integer' => 'Stok harus berupa angka.',
-            'stok.min' => 'Stok tidak boleh kurang dari 0.',
-            'category_id.required' => 'Kategori wajib dipilih.',
+            'nama.required' => 'Nama anggota wajib diisi.',
+            'nama.max' => 'Nama anggota maksimal 100 karakter.',
+            'nim.required' => 'NIM wajib diisi.',
+            'nim.max' => 'NIM maksimal 20 karakter.',
+            'email.required' => 'Email wajib diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'email.max' => 'Email maksimal 100 karakter.',
+            'nomor_telepon.required' => 'Nomor telepon wajib diisi.',
+            'nomor_telepon.max' => 'Nomor telepon maksimal 20 karakter.',
+            'status.required' => 'Status wajib dipilih.',
+            'status.in' => 'Status harus aktif atau nonaktif.',
         ];
     }
 }

@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Daftar Buku</title>
+    <title>Daftar Anggota</title>
     <style>
         body { font-family: sans-serif; margin: 40px; }
         table { border-collapse: collapse; width: 100%; margin-top: 16px; }
@@ -13,43 +13,39 @@
     </style>
 </head>
 <body>
-    <h1>Daftar Buku</h1>
-
+    <h1>Daftar Anggota</h1>
+ 
     @if (session('success'))
         <div class="success">{{ session('success') }}</div>
     @endif
-
-    <p><a href="{{ route('books.create') }}" class="btn">+ Tambah Buku</a></p>
-
+ 
+    <p><a href="{{ route('members.create') }}" class="btn">+ Tambah Anggota</a></p>
+ 
     <table>
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Judul</th>
-                <th>Penulis</th>
-                <th>Penerbit</th>
-                <th>Tahun</th>
-                <th>Stok</th>
-                <th>Kategori</th>
+                <th>Nama</th>
+                <th>NIM</th>
+                <th>Email</th>
+                <th>Nomor Telepon</th>
+                <th>Status</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($books as $book)
+            @forelse ($members as $member)
                 <tr>
-                    <td>{{ $book['id'] }}</td>
-                    <td>{{ $book['judul'] }}</td>
-                    <td>{{ $book['penulis'] }}</td>
-                    <td>{{ $book['penerbit'] }}</td>
-                    <td>{{ $book['tahun_terbit'] }}</td>
-                    <td>{{ $book['stok'] }}</td>
-                    <td>{{ $book['kategori'] }}</td>
+                    <td>{{ $member['id'] }}</td>
+                    <td>{{ $member['nama'] }}</td>
+                    <td>{{ $member['nim'] }}</td>
+                    <td>{{ $member['email'] }}</td>
+                    <td>{{ $member['nomor_telepon'] }}</td>
+                    <td>{{ ucfirst($member['status']) }}</td>
                     <td>
-                        <a href="{{ route('books.show', $book['id']) }}">Detail</a>
+                        <a href="{{ route('members.edit', $member['id']) }}">Edit</a>
                         |
-                        <a href="{{ route('books.edit', $book['id']) }}">Edit</a>
-                        |
-                        <form class="inline" action="{{ route('books.destroy', $book['id']) }}" method="POST">
+                        <form class="inline" action="{{ route('members.destroy', $member['id']) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Hapus</button>
@@ -58,12 +54,12 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="8">Belum ada data buku.</td>
+                    <td colspan="7">Belum ada data anggota.</td>
                 </tr>
             @endforelse
         </tbody>
     </table>
-
+ 
     <p><em>Catatan: data di atas masih data dummy (array statis di Controller), belum dari database. Migration &amp; Model Eloquent baru dibuat di Pertemuan 5.</em></p>
 </body>
 </html>
