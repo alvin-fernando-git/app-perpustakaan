@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Member;
 use App\Models\User;
+use App\Models\Loan; 
 
 class LoanController extends Controller
 {
