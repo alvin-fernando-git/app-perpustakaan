@@ -45,7 +45,7 @@
         @error('user_id')
             <div class="error">{{ $message }}</div>
         @enderror
-        <p><em>Catatan: dropdown petugas dipilih manual karena login belum ada - otomatis dari user yang login mulai Pertemuan 8.</em></p>
+        <p><em>Petugas pencatat: {{ auth()->user()->name }} (otomatis dari akun yang login).</em></p>
 
         <label for="tanggal_pinjam">Tanggal Pinjam</label>
         <input type="date" name="tanggal_pinjam" id="tanggal_pinjam" value="{{ old('tanggal_pinjam') }}">
