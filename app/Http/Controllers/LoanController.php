@@ -34,24 +34,29 @@ class LoanController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $validated = $request->validate([
-        'member_id' => 'required|integer|exists:members,id',
-        'tanggal_pinjam' => 'required|date',
-        'tanggal_kembali' => 'required|date|after_or_equal:tanggal_pinjam',
-        'book_ids' => 'required|array|min:1',
-        'book_ids.*' => 'integer|exists:books,id',
-    ]);
+    {
+        $validated = $request->validate([
+            'member_id' => 'required|integer|exists:members,id',
+            'tanggal_pinjam' => 'required|date',
+            'tanggal_kembali' => 'required|date|after_or_equal:tanggal_pinjam',
+            'book_ids' => 'required|array|min:1',
+            'book_ids.*' => 'integer|exists:books,id',
+        ]);
 
-    $loan = Loan::create([
-        'member_id' => $validated['member_id'],
-        'user_id' => auth()->id(),
-        'tanggal_pinjam' => $validated['tanggal_pinjam'],
-        'tanggal_kembali' => $validated['tanggal_kembali'],
-    ]);
+        $loan = Loan::create([
+            'member_id' => $validated['member_id'],
+            'user_id' => auth()->id(),
+            'tanggal_pinjam' => $validated['tanggal_pinjam'],
+            'tanggal_kembali' => $validated['tanggal_kembali'],
+        ]);
 
-    // ...
-}
+            foreach ($validated['book_ids'] as $bookId) {
+            $loan->loanItems()->create(['book_id' => $bookId]);
+        }
+
+        return redirect()->route('loans.index')
+            ->with('success', 'Transaksi peminjaman berhasil dibuat.');
+    }
 
     /**
      * Display the specified resource.
