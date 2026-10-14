@@ -40,5 +40,5 @@
         </tbody>
     </table>
 
-    {{ $categories->links('pagination::simple-default') }}
+    {{ $categories->links() }}
 @endsection

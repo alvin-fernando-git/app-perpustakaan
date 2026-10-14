@@ -13,7 +13,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members = Member::when(request('search'), fn ($query, $search) => $query->where('nama', 'like', "%{$search}%"))
+        $members = Member::when(request('search'), fn ($query, $search) => $query->whereLike('nama', "%{$search}%"))
             ->paginate(10);
 
         return view('members.index', compact('members'));
@@ -71,7 +71,7 @@ class MemberController extends Controller
             'nama' => 'required|string|max:100',
             'nim' => 'required|string|max:20|unique:members,nim,'.$id,
             'email' => 'required|email|max:100|unique:members,email,'.$id,
-            'nomor_telepon' => 'required|string|max:20',
+            'nomor_telepon' => 'required|string|max:15',
             'alamat' => 'required|string',
             'status' => 'required|in:aktif,nonaktif',
         ]);

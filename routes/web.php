@@ -18,8 +18,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('books', BookController::class);
     Route::resource('members', MemberController::class);
     Route::resource('loans', LoanController::class);
-    Route::put('/loans/{id}/return', [LoanController::class, 'return'])
-        ->name('loans.return');
+    Route::put('/loans/{id}/kembalikan', [LoanController::class, 'kembalikan'])
+        ->name('loans.kembalikan');
     Route::middleware(['admin'])->group(function () {
         Route::resource('categories', CategoryController::class)->except(['show']);
     });

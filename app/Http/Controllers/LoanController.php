@@ -50,7 +50,7 @@ class LoanController extends Controller
             'tanggal_kembali' => $validated['tanggal_kembali'],
         ]);
 
-            foreach ($validated['book_ids'] as $bookId) {
+        foreach ($validated['book_ids'] as $bookId) {
             $loan->loanItems()->create(['book_id' => $bookId]);
         }
 
@@ -113,10 +113,10 @@ class LoanController extends Controller
     }
 
     /**
-     * FReturn the specified resource from storage
+     * Tandai transaksi peminjaman sebagai dikembalikan.
      */
-    public function return(string $id)
+    public function kembalikan(string $id)
     {
-        return "LoanController@return, id: {$id}";
+        return "LoanController@kembalikan, id: {$id}";
     }
 }

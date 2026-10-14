@@ -62,14 +62,23 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 Nama Aplikasinya adalah Olib singkatan dari Online Library, yang bertujuan sebagai perpustakaan digital yang berisi buku-buku ilmiah, novel, dan lain-lain.
 
-## Cara menjalankan aplikasinya secara lokal adalah
+## Cara menjalankan aplikasinya secara lokal
 
 1. Clone repository ini ke komputer lokal.
-2. Buka terminal di folder project dan jalankan perintah `composer install`.
-3. Salin file `.env.example` dan ubah namanya menjadi `.env`, lalu atur konfigurasi database kamu (PostgreSQL/MySQL).
-4. Jalankan perintah `php artisan key:generate`.
-5. Jalankan `php artisan migrate` untuk menginisialisasi tabel database.
-6. Mulai server pengembangan lokal dengan menjalankan `php artisan serve`.
+2. Buka terminal di folder project dan jalankan `composer install`.
+3. Salin `.env.example` menjadi `.env`, lalu atur konfigurasi database kamu (PostgreSQL/MySQL).
+4. Jalankan `php artisan key:generate`.
+5. Jalankan `php artisan migrate` untuk membuat tabel.
+6. Jalankan `php artisan db:seed --class=UserSeeder` untuk membuat akun login.
+7. Mulai server dengan `php artisan serve`, lalu buka `http://127.0.0.1:8000`.
+
+## Akun untuk login
+
+| Role | Email | Password |
+|---|---|---|
+| Admin | admin@pens.ac.id | password |
+| Petugas | petugas1@pens.ac.id | password |
+| Petugas | petugas2@pens.ac.id | password |
 
 ## Perbedaan Model, View, dan Controller
 
