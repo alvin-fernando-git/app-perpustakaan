@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +19,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Protected
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-
+    Route::get('/profil', [ProfileController::class, 'show'])->name('profile.show');
+    Route::put('/profil/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
     Route::resource('books', BookController::class);
     Route::resource('members', MemberController::class);
     Route::get('/loans/report', [LoanController::class, 'report'])->name('loans.report');
