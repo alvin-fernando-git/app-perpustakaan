@@ -28,5 +28,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['admin'])->group(function () {
         Route::resource('categories', CategoryController::class)->except(['show']);
+
+        // Route group /admin (Tugas Pertemuan 2)
+        Route::prefix('admin')->name('admin.')->group(function () {
+            Route::get('/info', function () {
+                return 'Informasi Admin: Sistem Perpustakaan Digital Kampus (Olib) - Laravel '.app()->version();
+            })->name('info');
+        });
     });
 });
