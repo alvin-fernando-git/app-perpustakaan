@@ -1,4 +1,3 @@
-// File: API.md
 # Dokumentasi REST API - Olib (Perpustakaan Digital Kampus)
 
 <!-- CATATAN PENGGUNA: contoh response di bawah disusun dari struktur Resource/Controller di kode. Sebelum dikumpulkan, jalankan tiap endpoint di Postman pada database hasil `migrate:fresh --seed`, lalu ganti nilai contoh dengan hasil copy-paste dari Postman (tugas Pertemuan 9 meminta response sungguhan). -->
