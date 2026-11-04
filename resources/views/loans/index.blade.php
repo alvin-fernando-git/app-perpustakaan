@@ -33,7 +33,15 @@
                     </td>
                     <td>{{ $loan['tanggal_pinjam'] }}</td>
                     <td>{{ $loan['tanggal_kembali'] }}</td>
-                    <td>{{ ucfirst($loan['status']) }}</td>
+                    <td><span class="badge badge-{{ $loan['status'] }}">{{ ucfirst($loan['status']) }}</span></td>
+                    @if ($loan['status'] === 'dipinjam')
+                            <form class="inline" action="{{ route('loans.kembalikan', $loan['id']) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-success btn-sm">Kembalikan</button>
+                            </form>
+                            |
+                        @endif
                     <td>
                         <a href="{{ route('loans.show', $loan['id']) }}">Detail</a>
                         |
