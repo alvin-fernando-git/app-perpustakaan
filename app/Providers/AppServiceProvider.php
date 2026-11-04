@@ -14,6 +14,6 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        Paginator::defaultView('pagination::simple-default');
+        Paginator::defaultView('vendor.pagination.custom');
     }
 }
